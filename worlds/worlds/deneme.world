@@ -1,0 +1,1239 @@
+<sdf version='1.6'>
+  <world name='deneme'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='10_barrier'>
+      <model name='redwhite_barrier'>
+        <model name='2barrier_red'>
+          <link name='link'>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <gravity>1</gravity>
+            <inertial>
+              <mass>1</mass>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <transparency>0</transparency>
+              <cast_shadows>1</cast_shadows>
+              <material>
+                <script>
+                  <name>ModelPreview_1::link::visual_MATERIAL_</name>
+                  <uri>__default__</uri>
+                </script>
+                <ambient>0.4 0.4 0.4 1</ambient>
+                <shader type='vertex'>
+                  <normal_map>__default__</normal_map>
+                </shader>
+                <diffuse>0.643 0 0 1</diffuse>
+                <specular>0.933 0.933 0.925 1</specular>
+                <emissive>0.643 0 0 1</emissive>
+              </material>
+            </visual>
+            <collision name='collision'>
+              <laser_retro>0</laser_retro>
+              <max_contacts>10</max_contacts>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <geometry>
+                <mesh>
+                  <uri>/home/beyz/.gazebo/gazebo_models/drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                  <scale>1 1 1</scale>
+                </mesh>
+              </geometry>
+              <surface>
+                <friction>
+                  <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                  <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                      <slip>0</slip>
+                    </ode>
+                  </torsional>
+                </friction>
+                <bounce>
+                  <restitution_coefficient>0</restitution_coefficient>
+                  <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                  <collide_without_contact>0</collide_without_contact>
+                  <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                  <collide_bitmask>1</collide_bitmask>
+                  <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                  </ode>
+                  <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                  </bullet>
+                </contact>
+              </surface>
+            </collision>
+          </link>
+          <static>1</static>
+          <allow_auto_disable>1</allow_auto_disable>
+          <pose frame=''>0.002119 -0.86074 0 0 -0 0</pose>
+        </model>
+        <model name='drc_practice_white_jersey_barrier'>
+          <static>1</static>
+          <link name='link'>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+            </visual>
+            <collision name='collision'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <max_contacts>10</max_contacts>
+              <surface>
+                <contact>
+                  <ode/>
+                </contact>
+                <bounce/>
+                <friction>
+                  <torsional>
+                    <ode/>
+                  </torsional>
+                  <ode/>
+                </friction>
+              </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+          <pose frame=''>-0.00212 0.860737 0 0 -0 0</pose>
+        </model>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose frame=''>-0.007812 6.89216 0 0 -0 0</pose>
+      </model>
+      <model name='redwhite_barrier_0'>
+        <model name='2barrier_red'>
+          <link name='link'>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <gravity>1</gravity>
+            <inertial>
+              <mass>1</mass>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <transparency>0</transparency>
+              <cast_shadows>1</cast_shadows>
+              <material>
+                <script>
+                  <name>ModelPreview_1::link::visual_MATERIAL_</name>
+                  <uri>__default__</uri>
+                </script>
+                <ambient>0.4 0.4 0.4 1</ambient>
+                <shader type='vertex'>
+                  <normal_map>__default__</normal_map>
+                </shader>
+                <diffuse>0.643 0 0 1</diffuse>
+                <specular>0.933 0.933 0.925 1</specular>
+                <emissive>0.643 0 0 1</emissive>
+              </material>
+            </visual>
+            <collision name='collision'>
+              <laser_retro>0</laser_retro>
+              <max_contacts>10</max_contacts>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <geometry>
+                <mesh>
+                  <uri>/home/beyz/.gazebo/gazebo_models/drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                  <scale>1 1 1</scale>
+                </mesh>
+              </geometry>
+              <surface>
+                <friction>
+                  <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                  <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                      <slip>0</slip>
+                    </ode>
+                  </torsional>
+                </friction>
+                <bounce>
+                  <restitution_coefficient>0</restitution_coefficient>
+                  <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                  <collide_without_contact>0</collide_without_contact>
+                  <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                  <collide_bitmask>1</collide_bitmask>
+                  <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                  </ode>
+                  <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                  </bullet>
+                </contact>
+              </surface>
+            </collision>
+          </link>
+          <static>1</static>
+          <allow_auto_disable>1</allow_auto_disable>
+          <pose frame=''>0.002119 -0.86074 0 0 -0 0</pose>
+        </model>
+        <model name='drc_practice_white_jersey_barrier'>
+          <static>1</static>
+          <link name='link'>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+            </visual>
+            <collision name='collision'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <max_contacts>10</max_contacts>
+              <surface>
+                <contact>
+                  <ode/>
+                </contact>
+                <bounce/>
+                <friction>
+                  <torsional>
+                    <ode/>
+                  </torsional>
+                  <ode/>
+                </friction>
+              </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+          <pose frame=''>-0.00212 0.860737 0 0 -0 0</pose>
+        </model>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose frame=''>-0.000137 3.46077 0 0 -0 0</pose>
+      </model>
+      <model name='redwhite_barrier_1'>
+        <model name='2barrier_red'>
+          <link name='link'>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <gravity>1</gravity>
+            <inertial>
+              <mass>1</mass>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <transparency>0</transparency>
+              <cast_shadows>1</cast_shadows>
+              <material>
+                <script>
+                  <name>ModelPreview_1::link::visual_MATERIAL_</name>
+                  <uri>__default__</uri>
+                </script>
+                <ambient>0.4 0.4 0.4 1</ambient>
+                <shader type='vertex'>
+                  <normal_map>__default__</normal_map>
+                </shader>
+                <diffuse>0.643 0 0 1</diffuse>
+                <specular>0.933 0.933 0.925 1</specular>
+                <emissive>0.643 0 0 1</emissive>
+              </material>
+            </visual>
+            <collision name='collision'>
+              <laser_retro>0</laser_retro>
+              <max_contacts>10</max_contacts>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <geometry>
+                <mesh>
+                  <uri>/home/beyz/.gazebo/gazebo_models/drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                  <scale>1 1 1</scale>
+                </mesh>
+              </geometry>
+              <surface>
+                <friction>
+                  <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                  <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                      <slip>0</slip>
+                    </ode>
+                  </torsional>
+                </friction>
+                <bounce>
+                  <restitution_coefficient>0</restitution_coefficient>
+                  <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                  <collide_without_contact>0</collide_without_contact>
+                  <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                  <collide_bitmask>1</collide_bitmask>
+                  <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                  </ode>
+                  <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                  </bullet>
+                </contact>
+              </surface>
+            </collision>
+          </link>
+          <static>1</static>
+          <allow_auto_disable>1</allow_auto_disable>
+          <pose frame=''>0.002119 -0.86074 0 0 -0 0</pose>
+        </model>
+        <model name='drc_practice_white_jersey_barrier'>
+          <static>1</static>
+          <link name='link'>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+            </visual>
+            <collision name='collision'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <max_contacts>10</max_contacts>
+              <surface>
+                <contact>
+                  <ode/>
+                </contact>
+                <bounce/>
+                <friction>
+                  <torsional>
+                    <ode/>
+                  </torsional>
+                  <ode/>
+                </friction>
+              </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+          <pose frame=''>-0.00212 0.860737 0 0 -0 0</pose>
+        </model>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose frame=''>0.001784 0.007151 0 0 -0 0</pose>
+      </model>
+      <model name='redwhite_barrier_2'>
+        <model name='2barrier_red'>
+          <link name='link'>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <gravity>1</gravity>
+            <inertial>
+              <mass>1</mass>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <transparency>0</transparency>
+              <cast_shadows>1</cast_shadows>
+              <material>
+                <script>
+                  <name>ModelPreview_1::link::visual_MATERIAL_</name>
+                  <uri>__default__</uri>
+                </script>
+                <ambient>0.4 0.4 0.4 1</ambient>
+                <shader type='vertex'>
+                  <normal_map>__default__</normal_map>
+                </shader>
+                <diffuse>0.643 0 0 1</diffuse>
+                <specular>0.933 0.933 0.925 1</specular>
+                <emissive>0.643 0 0 1</emissive>
+              </material>
+            </visual>
+            <collision name='collision'>
+              <laser_retro>0</laser_retro>
+              <max_contacts>10</max_contacts>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <geometry>
+                <mesh>
+                  <uri>/home/beyz/.gazebo/gazebo_models/drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                  <scale>1 1 1</scale>
+                </mesh>
+              </geometry>
+              <surface>
+                <friction>
+                  <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                  <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                      <slip>0</slip>
+                    </ode>
+                  </torsional>
+                </friction>
+                <bounce>
+                  <restitution_coefficient>0</restitution_coefficient>
+                  <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                  <collide_without_contact>0</collide_without_contact>
+                  <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                  <collide_bitmask>1</collide_bitmask>
+                  <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                  </ode>
+                  <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                  </bullet>
+                </contact>
+              </surface>
+            </collision>
+          </link>
+          <static>1</static>
+          <allow_auto_disable>1</allow_auto_disable>
+          <pose frame=''>0.002119 -0.86074 0 0 -0 0</pose>
+        </model>
+        <model name='drc_practice_white_jersey_barrier'>
+          <static>1</static>
+          <link name='link'>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+            </visual>
+            <collision name='collision'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <max_contacts>10</max_contacts>
+              <surface>
+                <contact>
+                  <ode/>
+                </contact>
+                <bounce/>
+                <friction>
+                  <torsional>
+                    <ode/>
+                  </torsional>
+                  <ode/>
+                </friction>
+              </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+          <pose frame=''>-0.00212 0.860737 0 0 -0 0</pose>
+        </model>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose frame=''>0.012333 -3.44246 0 0 -0 0</pose>
+      </model>
+      <model name='redwhite_barrier_3'>
+        <model name='2barrier_red'>
+          <link name='link'>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+            <pose frame=''>0 0 0 0 -0 0</pose>
+            <gravity>1</gravity>
+            <inertial>
+              <mass>1</mass>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <inertia>
+                <ixx>1</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1</iyy>
+                <iyz>0</iyz>
+                <izz>1</izz>
+              </inertia>
+            </inertial>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <transparency>0</transparency>
+              <cast_shadows>1</cast_shadows>
+              <material>
+                <script>
+                  <name>ModelPreview_1::link::visual_MATERIAL_</name>
+                  <uri>__default__</uri>
+                </script>
+                <ambient>0.4 0.4 0.4 1</ambient>
+                <shader type='vertex'>
+                  <normal_map>__default__</normal_map>
+                </shader>
+                <diffuse>0.643 0 0 1</diffuse>
+                <specular>0.933 0.933 0.925 1</specular>
+                <emissive>0.643 0 0 1</emissive>
+              </material>
+            </visual>
+            <collision name='collision'>
+              <laser_retro>0</laser_retro>
+              <max_contacts>10</max_contacts>
+              <pose frame=''>0 0 0 0 -0 0</pose>
+              <geometry>
+                <mesh>
+                  <uri>/home/beyz/.gazebo/gazebo_models/drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                  <scale>1 1 1</scale>
+                </mesh>
+              </geometry>
+              <surface>
+                <friction>
+                  <ode>
+                    <mu>1</mu>
+                    <mu2>1</mu2>
+                    <fdir1>0 0 0</fdir1>
+                    <slip1>0</slip1>
+                    <slip2>0</slip2>
+                  </ode>
+                  <torsional>
+                    <coefficient>1</coefficient>
+                    <patch_radius>0</patch_radius>
+                    <surface_radius>0</surface_radius>
+                    <use_patch_radius>1</use_patch_radius>
+                    <ode>
+                      <slip>0</slip>
+                    </ode>
+                  </torsional>
+                </friction>
+                <bounce>
+                  <restitution_coefficient>0</restitution_coefficient>
+                  <threshold>1e+06</threshold>
+                </bounce>
+                <contact>
+                  <collide_without_contact>0</collide_without_contact>
+                  <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+                  <collide_bitmask>1</collide_bitmask>
+                  <ode>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                    <max_vel>0.01</max_vel>
+                    <min_depth>0</min_depth>
+                  </ode>
+                  <bullet>
+                    <split_impulse>1</split_impulse>
+                    <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                    <soft_cfm>0</soft_cfm>
+                    <soft_erp>0.2</soft_erp>
+                    <kp>1e+13</kp>
+                    <kd>1</kd>
+                  </bullet>
+                </contact>
+              </surface>
+            </collision>
+          </link>
+          <static>1</static>
+          <allow_auto_disable>1</allow_auto_disable>
+          <pose frame=''>0.002119 -0.86074 0 0 -0 0</pose>
+        </model>
+        <model name='drc_practice_white_jersey_barrier'>
+          <static>1</static>
+          <link name='link'>
+            <visual name='visual'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+            </visual>
+            <collision name='collision'>
+              <geometry>
+                <mesh>
+                  <uri>model://drc_practice_white_jersey_barrier/meshes/jersey_barrier.dae</uri>
+                </mesh>
+              </geometry>
+              <max_contacts>10</max_contacts>
+              <surface>
+                <contact>
+                  <ode/>
+                </contact>
+                <bounce/>
+                <friction>
+                  <torsional>
+                    <ode/>
+                  </torsional>
+                  <ode/>
+                </friction>
+              </surface>
+            </collision>
+            <self_collide>0</self_collide>
+            <enable_wind>0</enable_wind>
+            <kinematic>0</kinematic>
+          </link>
+          <pose frame=''>-0.00212 0.860737 0 0 -0 0</pose>
+        </model>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+        <pose frame=''>-0.006175 -6.91763 0 0 -0 0</pose>
+      </model>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose frame=''>-0.883593 0.220685 0 0 -0 0</pose>
+    </model>
+    <model name='grey_cylinder'>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.145833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.145833</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+        </inertial>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <gravity>1</gravity>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.252534</radius>
+              <length>1.21546</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.827 0.843 0.812 1</ambient>
+            <shader type='vertex'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <diffuse>0.827 0.843 0.812 1</diffuse>
+            <specular>0.933 0.933 0.925 1</specular>
+            <emissive>0.333 0.341 0.325 1</emissive>
+          </material>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.252534</radius>
+              <length>1.21546</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose frame=''>-2.07406 1.03704 0 0 -0 0</pose>
+    </model>
+    <model name='Intersection'>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://intersection-sign/meshes/intersection.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://intersection-sign/meshes/intersection.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-2.32729 -0.644272 0 0 -0 0</pose>
+    </model>
+    <model name='road_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>6 6 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>6 6 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://road_plane/materials/scripts</uri>
+              <uri>model://road_plane/materials/textures</uri>
+              <name>vrc/plane</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-3.97072 -0.611727 0 0 -0 0</pose>
+    </model>
+    <model name='road_inter_v2'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>6 6</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <mesh>
+              <uri>model://road_inter_v2/meshes/road_inter_v2.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>3.02747 -1.06912 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>152 793000000</sim_time>
+      <real_time>158 831037490</real_time>
+      <wall_time>1673865426 640167582</wall_time>
+      <iterations>152793</iterations>
+      <model name='10_barrier'>
+        <pose frame=''>-0.883593 0.220685 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <model name='redwhite_barrier'>
+          <pose frame=''>-0.891405 7.11285 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <model name='2barrier_red'>
+            <pose frame=''>-0.889286 6.25211 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.889286 6.25211 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+          <model name='drc_practice_white_jersey_barrier'>
+            <pose frame=''>-0.893525 7.97358 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.893525 7.97358 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+        </model>
+        <model name='redwhite_barrier_0'>
+          <pose frame=''>-0.88373 3.68146 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <model name='2barrier_red'>
+            <pose frame=''>-0.881611 2.82071 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.881611 2.82071 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+          <model name='drc_practice_white_jersey_barrier'>
+            <pose frame=''>-0.88585 4.54219 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.88585 4.54219 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+        </model>
+        <model name='redwhite_barrier_1'>
+          <pose frame=''>-0.881809 0.227836 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <model name='2barrier_red'>
+            <pose frame=''>-0.87969 -0.632904 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.87969 -0.632904 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+          <model name='drc_practice_white_jersey_barrier'>
+            <pose frame=''>-0.883929 1.08857 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.883929 1.08857 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+        </model>
+        <model name='redwhite_barrier_2'>
+          <pose frame=''>-0.87126 -3.22178 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <model name='2barrier_red'>
+            <pose frame=''>-0.869141 -4.08251 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.869141 -4.08251 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+          <model name='drc_practice_white_jersey_barrier'>
+            <pose frame=''>-0.87338 -2.36104 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.87338 -2.36104 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+        </model>
+        <model name='redwhite_barrier_3'>
+          <pose frame=''>-0.889768 -6.69695 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <model name='2barrier_red'>
+            <pose frame=''>-0.887649 -7.55769 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.887649 -7.55769 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+          <model name='drc_practice_white_jersey_barrier'>
+            <pose frame=''>-0.891888 -5.83621 0 0 -0 0</pose>
+            <scale>1 1 1</scale>
+            <link name='link'>
+              <pose frame=''>-0.891888 -5.83621 0 0 -0 0</pose>
+              <velocity>0 0 0 0 -0 0</velocity>
+              <acceleration>0 0 0 0 -0 0</acceleration>
+              <wrench>0 0 0 0 -0 0</wrench>
+            </link>
+          </model>
+        </model>
+      </model>
+      <model name='Intersection'>
+        <pose frame=''>-2.32729 -0.644272 -28615.7 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-2.32729 -0.644272 -28615.7 0 -0 0</pose>
+          <velocity>0 0 -748.906 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='grey_cylinder'>
+        <pose frame=''>-2.07406 1.03705 0.65773 1e-06 -0 7.4e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-2.07406 1.03705 0.65773 1e-06 -0 7.4e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.787131 -2.04229 -2.44883 -2.93324 1.34275 -0.115346</acceleration>
+          <wrench>0.787131 -2.04229 -2.44883 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='road_inter_v2'>
+        <pose frame=''>7.20559 -6.21661 0.087985 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>7.20559 -6.21661 0.087985 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='road_plane'>
+        <pose frame=''>-3.97072 -0.611727 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-3.97072 -0.611727 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-1.46956 -26.8618 18.1456 0 0.639643 1.3202</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
