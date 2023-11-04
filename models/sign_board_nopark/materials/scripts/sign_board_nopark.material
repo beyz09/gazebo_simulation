@@ -1,0 +1,15 @@
+material sign_board_nopark/Diffuse
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture noparking.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

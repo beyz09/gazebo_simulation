@@ -1,0 +1,15 @@
+material sign_board_turn_left/Diffuse
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        textures index.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}
