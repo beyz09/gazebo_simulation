@@ -1,2 +1,2 @@
 # gazebo simulation
- models and worlds for Autonomus Car Project
+ models and worlds for autonomous car project
